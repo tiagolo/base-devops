@@ -1,0 +1,50 @@
+mysql:
+    image: mysql:latest
+    hostname: mysql
+    ports:
+        - 3306:3306
+    environment:
+        - MYSQL_ROOT_PASSWORD=bfyvoh
+        - MYSQL_DATABASE=sonar
+        - MYSQL_USER=sonar
+        - MYSQL_PASSWORD=sonar
+    restart: always
+#    volumes:
+#        - ./data/mysql:/var/lib/mysql/
+
+sonar:
+    image: sonarqube:latest
+    hostname: sonar
+    links:
+        - mysql
+    ports:
+        - 9000:9000
+    environment:
+        - SONARQUBE_JDBC_URL=jdbc:mysql://mysql/sonar?useUnicode=true&characterEncoding=utf8
+        - SONARQUBE_JDBC_USERNAME=sonar
+        - SONARQUBE_JDBC_PASSWORD=sonar
+    restart: always
+#    volumes:
+#        - ./data/sonar
+
+nexus:
+    image: sonatype/nexus:oss
+    hostname: nexus
+    ports:
+        - 8081:8081
+    restart: always
+#    volumes:
+#        - ./data/nexus:/sonatype-work/
+
+jenkins:
+    image: jenkins:latest
+    hostname: jenkins
+    links:
+        - mysql
+        - sonar
+        - nexus
+    ports:
+        - 8080:8080
+    restart: always
+    volumes:
+        - ./data/jenkins:/var/jenkins_home/
