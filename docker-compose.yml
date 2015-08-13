@@ -4,7 +4,7 @@ mysql:
     ports:
         - 3306:3306
     environment:
-        - MYSQL_ROOT_PASSWORD=bfyvoh
+        - MYSQL_ROOT_PASSWORD=mysql
         - MYSQL_DATABASE=sonar
         - MYSQL_USER=sonar
         - MYSQL_PASSWORD=sonar
