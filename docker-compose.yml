@@ -2,10 +2,10 @@ data:
     build: .
     hostname: data
     volumes:
-        - ../data:/data
-        - ../data/mysql:/var/lib/mysql
-        - ../data/nexus:/sonatype-work
-        - ../data/jenkins:/var/jenkins_home
+        - ./data:/data
+        - ./data/mysql:/var/lib/mysql
+        - ./data/nexus:/sonatype-work
+        - ./data/jenkins:/var/jenkins_home
 
 mysql:
     image: mysql:latest
