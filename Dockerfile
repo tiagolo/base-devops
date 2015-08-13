@@ -8,6 +8,7 @@ RUN mkdir /docker-entrypoint-initdb.d
 
 VOLUME /var/lib/mysql
 VOLUME /sonatype-work
+VOLUME /var/jenkins_home
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

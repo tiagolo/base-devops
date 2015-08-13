@@ -2,8 +2,7 @@
 
 set -e
 
-echo pwd
-echo "$USER"
-#chown -R 200 /sonatype-work
+chown -R 200 /sonatype-work
+chown -R jenkins:jenkins /var/jenkins_home
 
 exec "$@"
