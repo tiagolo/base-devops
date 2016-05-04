@@ -44,7 +44,7 @@ nexus:
         - data
 
 jenkins:
-    image: jenkins:latest
+    image: jenkinsci/jenkins:latest
     hostname: jenkins
     links:
         - mysql
